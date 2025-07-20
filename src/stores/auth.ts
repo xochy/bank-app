@@ -4,11 +4,16 @@ import ApiService from "@/core/services/ApiService";
 import JwtService from "@/core/services/JwtService";
 
 export interface User {
-  name: string;
-  surname: string;
+  username: string;
   email: string;
   password: string;
   api_token: string;
+}
+
+export interface AuthPayload {
+  username?: string;
+  email?: string;
+  password?: string;
 }
 
 export const useAuthStore = defineStore("auth", () => {
@@ -35,7 +40,13 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function login(credentials: User) {
-    return ApiService.post("login", credentials)
+    const payload: AuthPayload = {
+      username: credentials.username,
+      email: credentials.email,
+      password: credentials.password,
+    };
+
+    return ApiService.post("login", payload)
       .then(({ data }) => {
         setAuth(data);
       })

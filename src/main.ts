@@ -6,7 +6,7 @@ import App from "./App.vue";
 /*
 TIP: To get started with clean router change path to @/router/clean.ts.
  */
-import router from "./router";
+import router from "./router/clean";
 import ElementPlus from "element-plus";
 import i18n from "@/core/plugins/i18n";
 
