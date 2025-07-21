@@ -4,11 +4,16 @@ import ApiService from "@/core/services/ApiService";
 import JwtService from "@/core/services/JwtService";
 
 export interface User {
-  name: string;
-  surname: string;
+  username: string;
   email: string;
   password: string;
-  api_token: string;
+  access_token: string;
+}
+
+export interface AuthPayload {
+  username?: string;
+  email?: string;
+  password?: string;
 }
 
 export const useAuthStore = defineStore("auth", () => {
@@ -20,7 +25,7 @@ export const useAuthStore = defineStore("auth", () => {
     isAuthenticated.value = true;
     user.value = authUser;
     errors.value = {};
-    JwtService.saveToken(user.value.api_token);
+    JwtService.saveToken(user.value.access_token);
   }
 
   function setError(error: any) {
@@ -35,12 +40,24 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function login(credentials: User) {
-    return ApiService.post("login", credentials)
+    const formData = new FormData();
+    formData.append("username", credentials.username);
+    formData.append("password", credentials.password);
+
+    return ApiService.post("token", formData)
       .then(({ data }) => {
-        setAuth(data);
+        const loggedInUser: User = {
+          username: credentials.username,
+          email: credentials.email,
+          password: credentials.password,
+          access_token: data.access_token,
+        };
+
+        setAuth(loggedInUser);
       })
       .catch(({ response }) => {
-        setError(response.data.errors);
+        console.error("Login error:", response.data.detail);
+        setError([response.data.detail]);
       });
   }
 
@@ -49,12 +66,18 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function register(credentials: User) {
-    return ApiService.post("register", credentials)
+    const payload = {
+      username: credentials.username,
+      email: credentials.email,
+      password: credentials.password,
+    };
+
+    return ApiService.post("signup", payload)
       .then(({ data }) => {
-        setAuth(data);
+        // redirecto to login
       })
       .catch(({ response }) => {
-        setError(response.data.errors);
+        // setError([response.data.detail]);
       });
   }
 

@@ -19,6 +19,7 @@
     "@fullcalendar/timegrid": "^6.1.8",
     "@fullcalendar/vue3": "^6.1.8",
     "@popperjs/core": "^2.11.8",
+    "@tanstack/vue-query": "^5.83.0",
     "@tinymce/tinymce-vue": "^5.1.0",
     "@vueform/multiselect": "^2.6.6",
     "animate.css": "^4.1.1",
@@ -73,6 +74,7 @@
     "typescript": "5.3.3",
     "vite": "^4.3.9",
     "vite-plugin-pwa": "^1.0.1",
+    "vite-plugin-vue-devtools": "^7.7.7",
     "vue-tsc": "^1.0.8"
   }
 }

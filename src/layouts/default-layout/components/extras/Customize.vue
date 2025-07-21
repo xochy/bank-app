@@ -1,15 +1,4 @@
 <template>
-  <button
-    id="kt_app_layout_builder_toggle"
-    class="btn btn-dark app-layout-builder-toggle lh-1 py-4"
-    data-bs-toggle="tooltip"
-    data-bs-placement="left"
-    data-bs-dismiss="click"
-    data-bs-trigger="hover"
-  >
-    <KTIcon icon-name="setting-4" icon-class="fs-4 me-1" />Customize
-  </button>
-
   <div
     id="kt_app_layout_builder"
     class="bg-body drawer drawer-end"
@@ -104,9 +93,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/demo1-light.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/demo1-light.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -143,9 +130,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/demo1-dark.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/demo1-dark.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -184,9 +169,7 @@
                 <!--begin::Heading-->
                 <div class="d-flex flex-column mb-4">
                   <h4 class="fw-bold text-gray-900">Width Mode</h4>
-                  <div class="fs-7 fw-semibold text-muted">
-                    Page width options
-                  </div>
+                  <div class="fs-7 fw-semibold text-muted">Page width options</div>
                 </div>
                 <!--end::Heading-->
                 <!--begin::Options-->
@@ -300,12 +283,7 @@
                     <!--end::Image-->
                     <!--begin::Check-->
                     <div
-                      style="
-                        visibility: hidden;
-                        height: 0;
-                        width: 0;
-                        overflow: hidden;
-                      "
+                      style="visibility: hidden; height: 0; width: 0; overflow: hidden"
                     >
                       <input
                         v-model="config.general.iconsType"
@@ -341,12 +319,7 @@
                     <!--end::Image-->
                     <!--begin::Check-->
                     <div
-                      style="
-                        visibility: hidden;
-                        height: 0;
-                        width: 0;
-                        overflow: hidden;
-                      "
+                      style="visibility: hidden; height: 0; width: 0; overflow: hidden"
                     >
                       <input
                         v-model="config.general.iconsType"
@@ -382,12 +355,7 @@
                     <!--end::Image-->
                     <!--begin::Check-->
                     <div
-                      style="
-                        visibility: hidden;
-                        height: 0;
-                        width: 0;
-                        overflow: hidden;
-                      "
+                      style="visibility: hidden; height: 0; width: 0; overflow: hidden"
                     >
                       <input
                         v-model="config.general.iconsType"
@@ -413,9 +381,7 @@
                 <!--begin::Heading-->
                 <div class="d-flex flex-column mb-4">
                   <h4 class="fw-bold text-gray-900">Menu Icon</h4>
-                  <div class="fs-7 fw-semibold text-muted">
-                    Sidebar menu icon options
-                  </div>
+                  <div class="fs-7 fw-semibold text-muted">Sidebar menu icon options</div>
                 </div>
                 <!--end::Heading-->
                 <!--begin::Options-->
@@ -497,9 +463,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/dark-sidebar.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/dark-sidebar.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -517,9 +481,7 @@
                           name="layoutType"
                         />
                         <!--begin::Label-->
-                        <div class="form-check-label text-gray-700">
-                          Dark Sidebar
-                        </div>
+                        <div class="form-check-label text-gray-700">Dark Sidebar</div>
                         <!--end::Label-->
                       </div>
                       <!--end::Check-->
@@ -537,9 +499,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/light-sidebar.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/light-sidebar.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -557,9 +517,7 @@
                           name="layoutType"
                         />
                         <!--begin::Label-->
-                        <div class="form-check-label text-gray-700">
-                          Light Sidebar
-                        </div>
+                        <div class="form-check-label text-gray-700">Light Sidebar</div>
                         <!--end::Label-->
                       </div>
                       <!--end::Check-->
@@ -577,9 +535,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/dark-header.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/dark-header.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -597,9 +553,7 @@
                           name="layoutType"
                         />
                         <!--begin::Label-->
-                        <div class="form-check-label text-gray-700">
-                          Dark Header
-                        </div>
+                        <div class="form-check-label text-gray-700">Dark Header</div>
                         <!--end::Label-->
                       </div>
                       <!--end::Check-->
@@ -617,9 +571,7 @@
                       <!--begin::Image-->
                       <div class="form-check-wrapper">
                         <img
-                          :src="
-                            getAssetPath('media/misc/layout/light-header.png')
-                          "
+                          :src="getAssetPath('media/misc/layout/light-header.png')"
                           class="mw-100"
                           alt=""
                         />
@@ -637,9 +589,7 @@
                           name="layoutType"
                         />
                         <!--begin::Label-->
-                        <div class="form-check-label text-gray-700">
-                          Light Header
-                        </div>
+                        <div class="form-check-label text-gray-700">Light Header</div>
                         <!--end::Label-->
                       </div>
                       <!--end::Check-->
@@ -686,9 +636,7 @@
           <!--begin::Indicator progress-->
           <span class="indicator-progress"
             >Please wait...
-            <span
-              class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span
           ></span>
           <!--end::Indicator progress-->
         </button>

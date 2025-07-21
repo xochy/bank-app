@@ -135,16 +135,8 @@
             <div class="nav-group nav-group-fluid">
               <!--begin::Option-->
               <label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="type"
-                  value="has"
-                  checked
-                />
-                <span
-                  class="btn btn-sm btn-color-muted btn-active btn-active-primary"
-                >
+                <input type="radio" class="btn-check" name="type" value="has" checked />
+                <span class="btn btn-sm btn-color-muted btn-active btn-active-primary">
                   All
                 </span>
               </label>
@@ -152,12 +144,7 @@
 
               <!--begin::Option-->
               <label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="type"
-                  value="users"
-                />
+                <input type="radio" class="btn-check" name="type" value="users" />
                 <span
                   class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
                 >
@@ -168,12 +155,7 @@
 
               <!--begin::Option-->
               <label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="type"
-                  value="orders"
-                />
+                <input type="radio" class="btn-check" name="type" value="orders" />
                 <span
                   class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
                 >
@@ -184,12 +166,7 @@
 
               <!--begin::Option-->
               <label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="type"
-                  value="projects"
-                />
+                <input type="radio" class="btn-check" name="type" value="projects" />
                 <span
                   class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
                 >
@@ -239,9 +216,7 @@
                   value="has"
                   checked
                 />
-                <span
-                  class="btn btn-sm btn-color-muted btn-active btn-active-primary"
-                >
+                <span class="btn btn-sm btn-color-muted btn-active btn-active-primary">
                   Has attachment
                 </span>
               </label>
@@ -249,12 +224,7 @@
 
               <!--begin::Option-->
               <label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="attachment"
-                  value="any"
-                />
+                <input type="radio" class="btn-check" name="attachment" value="any" />
                 <span
                   class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
                 >
@@ -341,18 +311,11 @@
             <label
               class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack"
             >
-              <span
-                class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2"
-              >
+              <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
                 Projects
               </span>
 
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value="1"
-                checked
-              />
+              <input class="form-check-input" type="checkbox" value="1" checked />
             </label>
           </div>
           <!--end::Input group-->
@@ -362,17 +325,10 @@
             <label
               class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack"
             >
-              <span
-                class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2"
-              >
+              <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
                 Targets
               </span>
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value="1"
-                checked
-              />
+              <input class="form-check-input" type="checkbox" value="1" checked />
             </label>
           </div>
           <!--end::Input group-->
@@ -382,9 +338,7 @@
             <label
               class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack"
             >
-              <span
-                class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2"
-              >
+              <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
                 Affiliate Programs
               </span>
               <input class="form-check-input" type="checkbox" value="1" />
@@ -397,17 +351,10 @@
             <label
               class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack"
             >
-              <span
-                class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2"
-              >
+              <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
                 Referrals
               </span>
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value="1"
-                checked
-              />
+              <input class="form-check-input" type="checkbox" value="1" checked />
             </label>
           </div>
           <!--end::Input group-->
@@ -417,9 +364,7 @@
             <label
               class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack"
             >
-              <span
-                class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2"
-              >
+              <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
                 Users
               </span>
               <input class="form-check-input" type="checkbox" value="1" />
@@ -463,9 +408,9 @@ export default defineComponent({
   },
   setup() {
     const search = ref<string>("");
-    const state = ref<
-      "main" | "empty" | "advanced-options" | "preferences" | "results"
-    >("main");
+    const state = ref<"main" | "empty" | "advanced-options" | "preferences" | "results">(
+      "main"
+    );
     const loading = ref<boolean>(false);
     const inputRef = ref<HTMLInputElement | null>(null);
 
