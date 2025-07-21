@@ -19,11 +19,24 @@ import { initKtIcon } from "@/core/plugins/keenthemes";
 
 import "@/core/plugins/prismjs";
 
+import { VueQueryPlugin } from "@tanstack/vue-query";
+
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
 app.use(ElementPlus);
+
+VueQueryPlugin.install(app, {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        gcTime: 1000 * 60 * 5, // 5 minutes
+        refetchOnReconnect: "always",
+      },
+    },
+  },
+});
 
 ApiService.init(app);
 initApexCharts(app);

@@ -6,6 +6,11 @@
       <p class="ml-2">Cargando instituciones...</p>
     </div>
 
+    <div v-else-if="isError" class="text-center text-red-500">
+      <p>Error al cargar las instituciones: {{ error?.message }}</p>
+      <!-- <el-button @click="refetch" type="primary" class="mt-4">Reintentar</el-button> -->
+    </div>
+
     <div
       v-else-if="institutions && institutions.length > 0"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -26,15 +31,12 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { useInstitutions } from "@/modules/institutions/composables/useInstitutions";
-import InstitutionCard from "@/modules/institutions/components/InstitutionCard.vue";
+import { useInstitutions } from "../composables/useInstitutions";
+import InstitutionCard from "../components/InstitutionCard.vue";
+import { ElButton } from "element-plus";
 
 const router = useRouter();
-const { institutions, isLoading } = useInstitutions();
-
-defineOptions({
-  name: "main-dashboard",
-});
+const { institutions, isLoading, isError, error } = useInstitutions();
 
 /**
  * Maneja la selección de una institución y redirige a la vista de cuentas.

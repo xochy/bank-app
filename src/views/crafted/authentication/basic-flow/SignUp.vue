@@ -29,17 +29,17 @@
 
       <!--begin::Input group-->
       <div class="row fv-row mb-7">
-        <label class="form-label fw-bold text-gray-900 fs-6">Name</label>
+        <label class="form-label fw-bold text-gray-900 fs-6">Username</label>
         <Field
           class="form-control form-control-lg form-control-solid"
           type="text"
           placeholder=""
-          name="name"
+          name="username"
           autocomplete="off"
         />
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
-            <ErrorMessage name="name" />
+            <ErrorMessage name="username" />
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default defineComponent({
     const submitButton = ref<HTMLButtonElement | null>(null);
 
     const registration = Yup.object().shape({
-      name: Yup.string().required().label("Name"),
+      username: Yup.string().required().label("Name"),
       email: Yup.string().min(4).required().email().label("Email"),
       password: Yup.string().required().label("Password"),
       password_confirmation: Yup.string()
@@ -221,21 +221,20 @@ export default defineComponent({
       await store.register(values);
 
       const error = Object.values(store.errors);
-
-      if (!error) {
+      console.log("Registration errors:", error);
+      if (error.length === 0) {
         Swal.fire({
-          text: "You have successfully logged in!",
+          text: "Registration successful! Redirecting to login page.",
           icon: "success",
           buttonsStyling: false,
-          confirmButtonText: "Ok, got it!",
+          confirmButtonText: "OK",
           heightAuto: false,
           customClass: {
             confirmButton: "btn fw-semibold btn-light-primary",
           },
-        }).then(function () {
-          // Go to page after successfully login
-          router.push({ name: "dashboard" });
         });
+
+        router.push({ name: "sign-in" });
       } else {
         Swal.fire({
           text: error[0] as string,
