@@ -5,6 +5,8 @@ import {
 } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import { useConfigStore } from "@/stores/config";
+import AccountsRoutes from "@/modules/accounts/router";
+import BalancesTransactionsRoutes from "@/modules/balances-transactions/router";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -86,6 +88,8 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:pathMatch(.*)*",
     redirect: "/404",
   },
+  ...AccountsRoutes, // Importar las rutas del módulo de cuentas
+  ...BalancesTransactionsRoutes, // Importar las rutas del módulo de balances y transacciones
 ];
 
 const router = createRouter({
@@ -120,7 +124,7 @@ router.beforeEach((to, from, next) => {
   configStore.resetLayoutConfig();
 
   // verify auth token before each page change
-  authStore.verifyAuth();
+  // authStore.verifyAuth();
 
   // before page access check if page requires authentication
   if (to.meta.middleware == "auth") {

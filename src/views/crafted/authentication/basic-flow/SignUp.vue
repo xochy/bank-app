@@ -27,62 +27,21 @@
       </div>
       <!--end::Heading-->
 
-      <!--begin::Action-->
-      <button type="button" class="btn btn-light-primary fw-bold w-100 mb-10">
-        <img
-          alt="Logo"
-          :src="getAssetPath('media/svg/brand-logos/google-icon.svg')"
-          class="h-20px me-3"
-        />
-        Sign in with Google
-      </button>
-      <!--end::Action-->
-
-      <!--begin::Separator-->
-      <div class="d-flex align-items-center mb-10">
-        <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-        <span class="fw-semibold text-gray-400 fs-7 mx-2">OR</span>
-        <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-      </div>
-      <!--end::Separator-->
-
       <!--begin::Input group-->
       <div class="row fv-row mb-7">
-        <!--begin::Col-->
-        <div class="col-xl-6">
-          <label class="form-label fw-bold text-gray-900 fs-6">First Name</label>
-          <Field
-            class="form-control form-control-lg form-control-solid"
-            type="text"
-            placeholder=""
-            name="first_name"
-            autocomplete="off"
-          />
-          <div class="fv-plugins-message-container">
-            <div class="fv-help-block">
-              <ErrorMessage name="first_name" />
-            </div>
+        <label class="form-label fw-bold text-gray-900 fs-6">Username</label>
+        <Field
+          class="form-control form-control-lg form-control-solid"
+          type="text"
+          placeholder=""
+          name="username"
+          autocomplete="off"
+        />
+        <div class="fv-plugins-message-container">
+          <div class="fv-help-block">
+            <ErrorMessage name="username" />
           </div>
         </div>
-        <!--end::Col-->
-
-        <!--begin::Col-->
-        <div class="col-xl-6">
-          <label class="form-label fw-bold text-gray-900 fs-6">Last Name</label>
-          <Field
-            class="form-control form-control-lg form-control-solid"
-            type="text"
-            placeholder=""
-            name="last_name"
-            autocomplete="off"
-          />
-          <div class="fv-plugins-message-container">
-            <div class="fv-help-block">
-              <ErrorMessage name="last_name" />
-            </div>
-          </div>
-        </div>
-        <!--end::Col-->
       </div>
       <!--end::Input group-->
 
@@ -142,9 +101,7 @@
             <div
               class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
             ></div>
-            <div
-              class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"
-            ></div>
+            <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
           </div>
           <!--end::Meter-->
         </div>
@@ -159,9 +116,7 @@
 
       <!--begin::Input group-->
       <div class="fv-row mb-5">
-        <label class="form-label fw-bold text-gray-900 fs-6"
-          >Confirm Password</label
-        >
+        <label class="form-label fw-bold text-gray-900 fs-6">Confirm Password</label>
         <Field
           class="form-control form-control-lg form-control-solid"
           type="password"
@@ -180,12 +135,7 @@
       <!--begin::Input group-->
       <div class="fv-row mb-10">
         <label class="form-check form-check-custom form-check-solid">
-          <Field
-            class="form-check-input"
-            type="checkbox"
-            name="toc"
-            value="1"
-          />
+          <Field class="form-check-input" type="checkbox" name="toc" value="1" />
           <span class="form-check-label fw-semibold text-gray-700 fs-6">
             I Agree &
             <a href="#" class="ms-1 link-primary">Terms and conditions</a>.
@@ -205,9 +155,7 @@
           <span class="indicator-label"> Submit </span>
           <span class="indicator-progress">
             Please wait...
-            <span
-              class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span>
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
           </span>
         </button>
       </div>
@@ -242,8 +190,7 @@ export default defineComponent({
     const submitButton = ref<HTMLButtonElement | null>(null);
 
     const registration = Yup.object().shape({
-      first_name: Yup.string().required().label("Name"),
-      last_name: Yup.string().required().label("Surname"),
+      username: Yup.string().required().label("Name"),
       email: Yup.string().min(4).required().email().label("Email"),
       password: Yup.string().required().label("Password"),
       password_confirmation: Yup.string()
@@ -274,21 +221,20 @@ export default defineComponent({
       await store.register(values);
 
       const error = Object.values(store.errors);
-
-      if (!error) {
+      console.log("Registration errors:", error);
+      if (error.length === 0) {
         Swal.fire({
-          text: "You have successfully logged in!",
+          text: "Registration successful! Redirecting to login page.",
           icon: "success",
           buttonsStyling: false,
-          confirmButtonText: "Ok, got it!",
+          confirmButtonText: "OK",
           heightAuto: false,
           customClass: {
             confirmButton: "btn fw-semibold btn-light-primary",
           },
-        }).then(function () {
-          // Go to page after successfully login
-          router.push({ name: "dashboard" });
         });
+
+        router.push({ name: "sign-in" });
       } else {
         Swal.fire({
           text: error[0] as string,
