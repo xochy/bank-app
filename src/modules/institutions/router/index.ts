@@ -1,9 +1,7 @@
-import { RouteRecordRaw } from "vue-router";
-
 /**
  * Rutas para el módulo de Instituciones.
  */
-const institutionRoutes: RouteRecordRaw[] = [
+const institutionRoutes = [
   {
     path: "/institutions",
     name: "Institutions",
