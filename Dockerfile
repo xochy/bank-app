@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package.json yarn.lock* ./
 
 # Instala las dependencias de Node.js
+# --production=false asegura que las devDependencies también se instalen para el build
 RUN npm install --production=false
 
 # Copia el resto del código de la aplicación al contenedor
@@ -17,12 +18,15 @@ COPY . .
 # Esto creará la carpeta 'dist' con tus archivos estáticos
 RUN npm run build
 
+# --- PASO DE DEPURACIÓN AÑADIDO ---
+# Lista el contenido de la carpeta 'dist' para verificar que los archivos se generaron correctamente
+RUN ls -l dist
+# --- FIN DEL PASO DE DEPURACIÓN ---
+
 # Expone el puerto en el que la aplicación escuchará.
 # Railway mapeará este puerto al puerto dinámico externo.
 EXPOSE 8080
 
 # Comando para iniciar la aplicación.
-# Aquí pasamos explícitamente la variable de entorno PORT al script server.js.
-# Railway inyectará el valor de $PORT en el entorno del contenedor,
-# y este comando lo usará para iniciar tu servidor.
+# Aquí, Node.js leerá la variable de entorno PORT que Railway inyecta en el contenedor.
 CMD ["node", "server.js"]
