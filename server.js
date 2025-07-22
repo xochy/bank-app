@@ -1,4 +1,3 @@
-// server.js
 const http = require("http");
 const handler = require("serve-handler");
 
@@ -21,9 +20,14 @@ const server = http.createServer((request, response) => {
   // y manejar las rutas de SPA (Single Page Application)
   return handler(request, response, {
     public: "dist", // La carpeta donde está tu build de Vue
+    // --- CAMBIO CLAVE AQUÍ ---
+    // fallback: true asegura que si un archivo no se encuentra, se sirva index.html
+    // cleanUrls: true ayuda con URLs limpias sin .html
+    cleanUrls: true,
     rewrites: [
-      { source: "**", destination: "/index.html" }, // Redirige todas las rutas a index.html
+      { source: "**", destination: "/index.html" }, // Esto sigue siendo útil
     ],
+    // --- FIN DEL CAMBIO ---
   });
 });
 
