@@ -7,7 +7,7 @@
       <div class="institution-info">
         <h3>{{ institution.display_name }}</h3>
         <p class="text-sm text-gray-500">
-          {{ institution.type }} - {{ institution.country_codes.join(", ") }}
+          {{ institution.type }}
         </p>
         <el-tag
           :type="institution.status === 'healthy' ? 'success' : 'warning'"
