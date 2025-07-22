@@ -1,4 +1,3 @@
-// server.js
 const http = require("http");
 const handler = require("serve-handler");
 
@@ -21,14 +20,19 @@ const server = http.createServer((request, response) => {
   // y manejar las rutas de SPA (Single Page Application)
   return handler(request, response, {
     public: "dist", // La carpeta donde está tu build de Vue
-    // --- CAMBIOS SUGERIDOS AQUÍ ---
-    // directoryListing: false evita que se listen los directorios si no se encuentra un archivo
-    directoryListing: false,
+    directoryListing: false, // Evita que se listen los directorios si no se encuentra un archivo
     cleanUrls: true, // Ayuda con URLs limpias sin .html
+    // --- CAMBIO CLAVE AQUÍ ---
+    // Asegura que index.html se sirva para la raíz y para rutas no encontradas.
+    // Esto es una alternativa o complemento a 'rewrites' para el caso de SPA.
+    // Si una URL no coincide con un archivo estático, se intentará servir index.html.
     rewrites: [
       { source: "**", destination: "/index.html" }, // Redirige todas las rutas a index.html
     ],
-    // --- FIN DE CAMBIOS ---
+    // También puedes probar añadiendo 'index: "index.html"' si el problema persiste,
+    // pero 'rewrites' con '**' debería ser suficiente para SPAs.
+    // index: "index.html",
+    // --- FIN DE CAMBIO ---
   });
 });
 
