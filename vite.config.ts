@@ -42,7 +42,7 @@ export default defineConfig({
         display: "minimal-ui",
         orientation: "portrait",
         scope: "/",
-        start_url: "/dashboard",
+        start_url: "/", // <--- CAMBIO AQUÍ: Cambiado de "/dashboard" a "/"
         icons: [
           {
             src: "pwa-192x192.png",
